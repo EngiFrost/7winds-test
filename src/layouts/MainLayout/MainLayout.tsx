@@ -28,7 +28,7 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
             <ReplyIcon fontSize='medium' onClick={() => console.info('Back button pushed!')}/>
           </S.ButtonContainer>
           
-          <Menu 
+          <Menu // TODO: move to separate component
             style={{ width: 234 }} 
             onClick={onClick} 
             selectedKeys={[current]} 
@@ -45,7 +45,7 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
       </S.AppBarSection>
 
       <S.MainSection>
-        <Menu 
+        <Menu // TODO: move to separate component
           style={{ width: 234 }} 
           defaultSelectedKeys={['item5']} 
           defaultOpenKeys={['sub1']}

@@ -1,9 +1,10 @@
 import { MainLayout } from '../layouts/MainLayout/MainLayout';
+import { Table } from './Table/Table';
 
 function App() {
   return (
     <MainLayout>
-      <h1>Here will be an app...</h1>
+      <Table />
     </MainLayout>
   );
 }
