@@ -8,6 +8,7 @@ import { AppBar } from './AppBar';
 
 import * as S from './styles';
 import { TabPanel } from './TabPanel';
+import { ITab } from './entity';
 
 type MainLayoutProps = {
   children: ReactNode;
@@ -16,31 +17,31 @@ type MainLayoutProps = {
 export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
   const appBarItems = [
     {
-      value: 'display',
+      id: 'display',
       label: 'Просмотр',
     },
     {
-      value: 'management',
+      id: 'management',
       label: 'Управление',
     },
   ];
 
-  const sidebarItems = [
-    { value: 'item1', label: 'Label1' },
-    { value: 'item2', label: 'Label2' },
-    { value: 'item3', label: 'Label3' },
-    { value: 'item4', label: 'Label4' },
-    { value: 'item5', label: 'Label5' },
-    { value: 'item6', label: 'Label6' },
-    { value: 'item7', label: 'Label7' },
-    { value: 'item8', label: 'Label8' },
-    { value: 'item9', label: 'Label9' },
-    { value: 'item10', label: 'Label10' },
-    { value: 'item11', label: 'Label11' },
-    { value: 'item12', label: 'Label12' },
-    { value: 'item13', label: 'Label13' },
-    { value: 'item14', label: 'Label14' },
-    { value: 'item15', label: 'Label15' },
+  const sidebarItems: ITab[] = [
+    { id: 'item1', label: 'Label1' },
+    { id: 'item2', label: 'Label2' },
+    { id: 'item3', label: 'Label3' },
+    { id: 'item4', label: 'Label4' },
+    { id: 'item5', label: 'Label5' },
+    { id: 'item6', label: 'Label6' },
+    { id: 'item7', label: 'Label7' },
+    { id: 'item8', label: 'Label8' },
+    { id: 'item9', label: 'Label9' },
+    { id: 'item10', label: 'Label10' },
+    { id: 'item11', label: 'Label11' },
+    { id: 'item12', label: 'Label12' },
+    { id: 'item13', label: 'Label13' },
+    { id: 'item14', label: 'Label14' },
+    { id: 'item15', label: 'Label15' },
   ];
 
   return (

@@ -1,13 +1,14 @@
 import { Box, Tabs, Tab } from '@mui/material';
 import { FC, useState } from 'react';
+import { ITab } from './entity';
 
 type AppBarProps = {
-  items: {value: string, label: string}[],
+  items: ITab[],
   activeValue: string
 }
 
 export const AppBar: FC<AppBarProps> = ({items, activeValue}) => {
-  const [value, setValue] = useState('display');
+  const [value, setValue] = useState(activeValue);
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -22,7 +23,7 @@ export const AppBar: FC<AppBarProps> = ({items, activeValue}) => {
         indicatorColor="primary"
         aria-label="appBar"
       >
-        {items.map(item => <Tab value={item.value} label={item.label} />)}
+        {items.map(item => <Tab value={item.id} label={item.label} />)}
       </Tabs>
     </Box>
   );

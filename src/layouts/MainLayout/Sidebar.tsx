@@ -2,20 +2,24 @@ import { FC, useState } from 'react';
 import { Box, Tabs, Tab, Collapse, IconButton, styled, IconButtonProps } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import { observer } from 'mobx-react-lite';
 
 import * as S from './styles';
+import { mainLayoutStore } from '../../store/MainLayoutStore';
+import { ITab } from './entity';
 
 type SidebarProps = {
-  items: {value: string, label: string}[],
+  items: ITab[],
   activeValue: string
 }
 
-export const Sidebar: FC<SidebarProps> = ({items, activeValue}) => {
+export const Sidebar: FC<SidebarProps> = observer(({items, activeValue}) => {
   const [value, setValue] = useState(activeValue);
   const [expanded, setExpanded] = useState(true)
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
+    mainLayoutStore.setActiveTab(items.find(item => item.id === newValue)!)
   };
 
   const handleExpandClick = () => {
@@ -53,7 +57,7 @@ export const Sidebar: FC<SidebarProps> = ({items, activeValue}) => {
         >
           {items.map(item => (
             <Tab 
-              value={item.value} 
+              value={item.id} 
               label={item.label} 
               icon={<DashboardIcon />} 
               iconPosition="start"
@@ -63,7 +67,7 @@ export const Sidebar: FC<SidebarProps> = ({items, activeValue}) => {
       </Collapse>
     </Box>
   );
-}
+})
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;

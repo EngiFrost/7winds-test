@@ -1,19 +1,20 @@
 import { makeAutoObservable } from 'mobx';
-import type { Tab } from '../layouts/MainLayout/entity';
+import type { ITab } from '../layouts/MainLayout/entity';
 
 class MainLayoutStore {
-  activeTab: Tab = { label: '', id: '' };
-  openedTabs: Tab[] = [{ label: 'awdad', id: '1' }, { label: 'asdsad', id: '2' }];
+  activeTab: ITab = { label: '', id: '' };
+  openedTabs: ITab[] = [];
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  setActiveTab(tab: Tab) {
+  setActiveTab(tab: ITab) {
     this.activeTab = tab;
+    this.addTabToOpened(tab)
   }
 
-  addTabToOpened(tab: Tab) {
+  addTabToOpened(tab: ITab) {
     this.openedTabs.push(tab);
   }
 
