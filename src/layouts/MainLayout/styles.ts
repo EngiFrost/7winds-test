@@ -22,7 +22,7 @@ export const AppBarLeft = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   gap: 19px;
-  margin-right: 10px;
+  margin-right: 12px;
 `;
 
 export const AppBarRight = styled.div`
