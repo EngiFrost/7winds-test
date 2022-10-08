@@ -7,6 +7,7 @@ import { Sidebar } from './Sidebar';
 import { AppBar } from './AppBar';
 
 import * as S from './styles';
+import { TabPanel } from './TabPanel';
 
 type MainLayoutProps = {
   children: ReactNode;
@@ -47,24 +48,27 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
       <S.AppBarSection>
         <S.AppBarLeft>
           <S.ButtonContainer>
-            <AppsIcon fontSize='medium' onClick={() => console.info('Apps button pushed!')}/>
-            <ReplyIcon fontSize='medium' onClick={() => console.info('Back button pushed!')}/>
+            <AppsIcon fontSize="medium" onClick={() => console.info('Apps button pushed!')} />
+            <ReplyIcon fontSize="medium" onClick={() => console.info('Back button pushed!')} />
           </S.ButtonContainer>
 
-          <AppBar items={appBarItems} activeValue='display'/>
+          <AppBar items={appBarItems} activeValue="display" />
         </S.AppBarLeft>
 
-        <S.AppBarRight> 
-          <Avatar src="https://joeschmoe.io/api/v1/random" style={{height: '28px', width: '28px'}}/>
+        <S.AppBarRight>
+          <Avatar src="https://joeschmoe.io/api/v1/random" style={{ height: '28px', width: '28px' }} />
           <S.Text>Антон Петров</S.Text>
           <ExpandMoreIcon />
         </S.AppBarRight>
       </S.AppBarSection>
 
       <S.MainSection>
-        <Sidebar items={sidebarItems} activeValue='item5'/>
+        <Sidebar items={sidebarItems} activeValue="item5" />
 
-        <S.ContentSection>{children}</S.ContentSection>
+        <S.ContentSection>
+          <TabPanel />
+          {children}
+        </S.ContentSection>
       </S.MainSection>
     </S.Wrapper>
   );

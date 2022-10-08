@@ -12,7 +12,7 @@ type SidebarProps = {
 
 export const Sidebar: FC<SidebarProps> = ({items, activeValue}) => {
   const [value, setValue] = useState(activeValue);
-  const [expanded, setExpanded] = useState(false)
+  const [expanded, setExpanded] = useState(true)
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);

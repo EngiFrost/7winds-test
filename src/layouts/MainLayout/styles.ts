@@ -64,4 +64,9 @@ export const SidebarSubtitle = styled.div`
   line-height: 12px;
 `;
 
-export const SidebarIcon = styled.div``;
+export const SidebarIcon = styled.div``; // TODO: ???
+
+export const TabsWrapper = styled.div`
+  width: 100%;
+  height: 44px;
+`
