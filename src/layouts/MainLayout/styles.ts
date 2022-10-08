@@ -39,3 +39,29 @@ export const MainSection = styled.div`
 `;
 
 export const ContentSection = styled.div``;
+
+export const SidebarHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 44px;
+  padding: 8px 20px;
+`;
+
+export const SidebarText = styled.div`
+  display: flex;
+  flex-direction: column;
+  color: #a1a1aa;
+`;
+
+export const SidebarTitle = styled.div`
+  font-size: 14px;
+  line-height: 16px;
+`;
+
+export const SidebarSubtitle = styled.div`
+  font-size: 10px;
+  line-height: 12px;
+`;
+
+export const SidebarIcon = styled.div``;
