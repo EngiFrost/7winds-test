@@ -3,12 +3,12 @@ import ReplyIcon from '@mui/icons-material/Reply';
 import AppsIcon from '@mui/icons-material/Apps';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Avatar } from '@mui/material';
-import { Sidebar } from './Sidebar';
+import { Sidebar } from '../../components/Sidebar/Sidebar';
 import { AppBar } from './AppBar';
+import { ITab } from './entity';
+import { TabPanel } from './TabPanel';
 
 import * as S from './styles';
-import { TabPanel } from './TabPanel';
-import { ITab } from './entity';
 
 type MainLayoutProps = {
   children: ReactNode;

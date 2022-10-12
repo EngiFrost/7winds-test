@@ -11,7 +11,9 @@ class MainLayoutStore {
 
   setActiveTab(tab: ITab) {
     this.activeTab = tab;
-    this.addTabToOpened(tab)
+    if (this.openedTabs.findIndex((t) => t.id === tab.id) !== -1) {
+      this.addTabToOpened(tab);
+    }
   }
 
   addTabToOpened(tab: ITab) {
