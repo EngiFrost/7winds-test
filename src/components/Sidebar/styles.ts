@@ -6,6 +6,8 @@ export const SidebarHeader = styled.div`
   align-items: center;
   height: 44px;
   padding: 8px 20px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #414144;
 `;
 
 export const SidebarText = styled.div`
@@ -24,15 +26,10 @@ export const SidebarSubtitle = styled.div`
   line-height: 12px;
 `;
 
-export const SidebarIcon = styled.div``; // TODO: ???
-
 export const SidebarTabList = styled.div`
-  // FIXME: It works without these styles!
-  // TODO: make it gray when collapsed!
   display: flex;
   flex-direction: column;
   background-color: #27272a;
-  border: 1px solid #414144;
   box-sizing: border-box;
 `;
 
@@ -47,7 +44,7 @@ export const TabWrapper = styled.div<{ isActive: boolean }>`
 
   &:hover {
     cursor: pointer;
-    background-color: #A1A1AA;
+    background-color: #a1a1aa;
   }
 `;
 

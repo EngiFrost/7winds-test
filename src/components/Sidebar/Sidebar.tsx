@@ -19,7 +19,7 @@ export const Sidebar: FC<SidebarProps> = observer(({ items, activeValue }) => {
   const [value, setValue] = useState('item5'); // FIXME:
 
   const handleChange = (newValue: string) => {
-    setValue(newValue)
+    setValue(newValue);
     mainLayoutStore.setActiveTab(items.find((item) => item.id === newValue)!);
   };
 
@@ -28,29 +28,30 @@ export const Sidebar: FC<SidebarProps> = observer(({ items, activeValue }) => {
   };
 
   return (
-    <Box sx={{ width: '234px' }}>
+    <Box
+      sx={{
+        width: '234px',
+        height: 'calc(100vh - 44px)',
+        backgroundColor: '#27272A',
+        borderLeft: '1px solid #414144',
+        boxSizing: 'border-box',
+      }}
+    >
       <S.SidebarHeader>
         <S.SidebarText>
           <S.SidebarTitle>Название проекта</S.SidebarTitle>
           <S.SidebarSubtitle>Аббревиатура</S.SidebarSubtitle>
         </S.SidebarText>
 
-        <S.SidebarIcon>
-          <ExpandMore expand={expanded} onClick={handleExpandClick} aria-expanded={expanded} aria-label="show more">
-            <ExpandMoreIcon />
-          </ExpandMore>
-        </S.SidebarIcon>
+        <ExpandMore expand={expanded} onClick={handleExpandClick} aria-expanded={expanded} aria-label="show more">
+          <ExpandMoreIcon color="secondary" />
+        </ExpandMore>
       </S.SidebarHeader>
 
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <S.SidebarTabList>
           {items.map((item) => (
-            <SidebarTab 
-              key={item.id} 
-              label={item.label} 
-              icon={<DashboardIcon />} 
-              isActive={value === item.id}
-              onClick={() => handleChange(item.id)} />
+            <SidebarTab key={item.id} label={item.label} icon={<DashboardIcon />} isActive={value === item.id} onClick={() => handleChange(item.id)} />
           ))}
         </S.SidebarTabList>
       </Collapse>
