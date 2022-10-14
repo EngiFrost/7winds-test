@@ -44,7 +44,7 @@ export const Sidebar: FC<SidebarProps> = observer(({ items, activeValue }) => {
         </S.SidebarText>
 
         <ExpandMore expand={expanded} onClick={handleExpandClick} aria-expanded={expanded} aria-label="show more">
-          <ExpandMoreIcon color="secondary" />
+          <ExpandMoreIcon color="primary" />
         </ExpandMore>
       </S.SidebarHeader>
 

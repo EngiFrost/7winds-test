@@ -9,10 +9,10 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({ // TODO: make white a primary color!
   palette: {
     primary: {
-      main: '#0971f1',
+      main: '#fff',
     },
     secondary: {
-      main: '#fff',
+      main: '#A1A1AA',
     }
   },
 });
