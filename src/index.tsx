@@ -6,14 +6,14 @@ import { ThemeProvider } from '@mui/system';
 
 import { createTheme } from '@mui/material/styles';
 
-const theme = createTheme({ // TODO: make white a primary color!
+const theme = createTheme({
   palette: {
     primary: {
       main: '#fff',
     },
     secondary: {
       main: '#A1A1AA',
-    }
+    },
   },
 });
 

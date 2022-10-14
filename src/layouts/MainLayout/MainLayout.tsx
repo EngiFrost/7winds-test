@@ -26,7 +26,7 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
     },
   ];
 
-  const sidebarItems: ITab[] = [
+  const sidebarItems: ITab[] = [ // TODO: move to store
     { id: 'item1', label: 'Label1' },
     { id: 'item2', label: 'Label2' },
     { id: 'item3', label: 'Label3' },
@@ -49,8 +49,16 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
       <S.AppBarSection>
         <S.AppBarLeft>
           <S.ButtonContainer>
-            <AppsIcon fontSize="medium" onClick={() => console.info('Apps button pushed!')} />
-            <ReplyIcon fontSize="medium" onClick={() => console.info('Back button pushed!')} />
+            <AppsIcon 
+              fontSize="medium" 
+              color='primary'
+              onClick={() => console.info('Apps button pushed!')} 
+            />
+            <ReplyIcon 
+              fontSize="medium" 
+              color='primary'
+              onClick={() => console.info('Back button pushed!')} 
+            />
           </S.ButtonContainer>
 
           <AppBar items={appBarItems} activeValue="display" />

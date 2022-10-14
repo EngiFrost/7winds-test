@@ -19,9 +19,10 @@ export const AppBar: FC<AppBarProps> = ({items, activeValue}) => {
       <Tabs
         value={value}
         onChange={handleChange}
-        textColor="primary" // FIXME: change colors
+        textColor="primary"
         indicatorColor="primary"
         aria-label="appBar"
+        sx={{button: {padding: 0, margin: "0 14px"}}}
       >
         {items.map(item => <Tab value={item.id} label={item.label} />)}
       </Tabs>

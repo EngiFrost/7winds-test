@@ -12,6 +12,9 @@ export const AppBarSection = styled.div`
   justify-content: space-between;
   height: 44px;
   padding: 0 20px;
+  background-color: #27272a;
+  box-sizing: border-box;
+  border: 1px solid #414144;
 `;
 
 export const AppBarLeft = styled.div`
@@ -22,7 +25,11 @@ export const AppBarLeft = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   gap: 19px;
-  margin-right: 12px;
+  margin-right: 15px;
+
+  svg:hover {
+    cursor: pointer;
+  }
 `;
 
 export const AppBarRight = styled.div`
