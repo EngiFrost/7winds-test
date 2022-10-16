@@ -8,6 +8,8 @@ import { AppBar } from './AppBar';
 import { ITab } from '../../model/tab';
 import { TabPanel } from '../../components/TabPanel/TabPanel';
 import { Typography } from '@mui/material';
+import { observer } from 'mobx-react-lite';
+import { mainLayoutStore } from '../../store/MainLayoutStore';
 
 import * as S from './styles';
 
@@ -15,7 +17,7 @@ type MainLayoutProps = {
   children: ReactNode;
 };
 
-export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
+export const MainLayout: FC<MainLayoutProps> = observer(({ children }) => {
   const appBarItems = [
     {
       id: 'display',
@@ -29,21 +31,21 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
 
   const sidebarItems: ITab[] = [
     // TODO: move to store
-    { id: 'item1', label: 'Label1' },
-    { id: 'item2', label: 'Label2' },
-    { id: 'item3', label: 'Label3' },
-    { id: 'item4', label: 'Label4' },
-    { id: 'item5', label: 'Label5' },
-    { id: 'item6', label: 'Label6' },
-    { id: 'item7', label: 'Label7' },
-    { id: 'item8', label: 'Label8' },
-    { id: 'item9', label: 'Label9' },
-    { id: 'item10', label: 'Label10' },
-    { id: 'item11', label: 'Label11' },
-    { id: 'item12', label: 'Label12' },
-    { id: 'item13', label: 'Label13' },
-    { id: 'item14', label: 'Label14' },
-    { id: 'item15', label: 'Label15' },
+    { id: 'item1', label: 'По проекту' },
+    { id: 'item2', label: 'Объекты' },
+    { id: 'item3', label: 'РД' },
+    { id: 'item4', label: 'МТО' },
+    { id: 'item5', label: 'СМР' },
+    { id: 'item6', label: 'График' },
+    { id: 'item7', label: 'МиМ' },
+    { id: 'item8', label: 'Рабочие' },
+    { id: 'item9', label: 'Капвложения' },
+    { id: 'item10', label: 'Бюджет' },
+    { id: 'item11', label: 'Финансирование' },
+    { id: 'item12', label: 'Панорамы' },
+    { id: 'item13', label: 'Камеры' },
+    { id: 'item14', label: 'Поручения' },
+    { id: 'item15', label: 'Контрагенты' },
   ];
 
   return (
@@ -63,12 +65,12 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
           <Typography variant="body2" sx={{ margin: '0 0 0 8px' }}>
             Антон Петров
           </Typography>
-          <ExpandMoreIcon color="primary" sx={{'&:hover': {cursor: 'pointer'}}} />
+          <ExpandMoreIcon color="primary" sx={{ '&:hover': { cursor: 'pointer' } }} />
         </S.AppBarRight>
       </S.AppBarSection>
 
       <S.MainSection>
-        <Sidebar items={sidebarItems} activeValue="item5" />
+        <Sidebar items={sidebarItems} activeValue={mainLayoutStore.activeTab.id} />
 
         <S.ContentSection>
           <TabPanel />
@@ -77,4 +79,4 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
       </S.MainSection>
     </S.Wrapper>
   );
-};
+});

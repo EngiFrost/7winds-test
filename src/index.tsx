@@ -19,25 +19,37 @@ const theme = createTheme({
   typography: {
     allVariants: {
       fontSize: 14,
-      textTransform: 'capitalize',
-    },
-    body1: {
       color: '#fff',
+    },
+
+    body1: {
       lineHeight: '18.2px',
       letterSpacing: '0.1 px',
     },
     body2: {
-      color: '#fff',
       lineHeight: '16.41px',
+    },
+    button: {
+      textTransform: 'capitalize',
+    },
+    caption: {
+      color: '#A1A1AA',
+      fontSize: 10,
+      lineHeight: '11.72px',
+    },
+    h2: {
+      color: '#fff',
+      fontSize: 18,
+      lineHeight: '21.09px',
     },
     subtitle1: {
       color: '#A1A1AA',
-      textTransform: 'none',
       lineHeight: '16.41px',
     },
-    caption: {
-      fontSize: 10,
-      lineHeight: '11.72px',
+    subtitle2: {
+      color: '#A1A1AA',
+      fontSize: 18,
+      lineHeight: '21.09px',
     },
   },
 });

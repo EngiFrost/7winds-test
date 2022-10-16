@@ -16,10 +16,8 @@ type SidebarProps = {
 
 export const Sidebar: FC<SidebarProps> = observer(({ items, activeValue }) => {
   const [expanded, setExpanded] = useState(true);
-  const [value, setValue] = useState(activeValue);
 
   const handleChange = (newValue: string) => {
-    setValue(newValue);
     mainLayoutStore.setActiveTab(items.find((item) => item.id === newValue)!);
   };
 
@@ -34,6 +32,7 @@ export const Sidebar: FC<SidebarProps> = observer(({ items, activeValue }) => {
         height: 'calc(100vh - 44px)',
         backgroundColor: '#27272A',
         borderLeft: '1px solid #414144',
+        borderRight: '1px solid #414144',
         boxSizing: 'border-box',
       }}
     >
@@ -51,13 +50,7 @@ export const Sidebar: FC<SidebarProps> = observer(({ items, activeValue }) => {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <S.SidebarTabList>
           {items.map((item) => (
-            <SidebarTab 
-              key={item.id} 
-              label={item.label} 
-              icon={<DashboardIcon color="primary" />} 
-              isActive={value === item.id} 
-              onClick={() => handleChange(item.id)} 
-            />
+            <SidebarTab key={item.id} label={item.label} icon={<DashboardIcon color="primary" />} isActive={mainLayoutStore.activeTab.id === item.id} onClick={() => handleChange(item.id)} />
           ))}
         </S.SidebarTabList>
       </Collapse>

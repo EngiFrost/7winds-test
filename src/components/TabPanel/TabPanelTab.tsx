@@ -16,7 +16,7 @@ export const TabPanelTab: FC<TabPanelTabProps> = observer((props) => {
 
   return (
     <S.TabWrapper isActive={isActive} onClick={onClick}>
-      <Typography variant="body2">{label}</Typography>
+      <Typography variant={isActive ? 'h2' : 'subtitle2'}>{label}</Typography>
       {isActive && <S.Icon>{icon}</S.Icon>}
     </S.TabWrapper>
   );
