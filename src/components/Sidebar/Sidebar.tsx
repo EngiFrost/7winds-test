@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { Box, Collapse, IconButton, styled, IconButtonProps } from '@mui/material';
+import { Box, Collapse, IconButton, styled, IconButtonProps, Typography } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { observer } from 'mobx-react-lite';
@@ -39,8 +39,10 @@ export const Sidebar: FC<SidebarProps> = observer(({ items, activeValue }) => {
     >
       <S.SidebarHeader>
         <S.SidebarText>
-          <S.SidebarTitle>Название проекта</S.SidebarTitle>
-          <S.SidebarSubtitle>Аббревиатура</S.SidebarSubtitle>
+          {/* <S.SidebarTitle>Название проекта</S.SidebarTitle>
+          <S.SidebarSubtitle>Аббревиатура</S.SidebarSubtitle> */}
+          <Typography variant="body2">Название проекта</Typography>
+          <Typography variant="caption">Аббревиатура</Typography>
         </S.SidebarText>
 
         <ExpandMore expand={expanded} onClick={handleExpandClick} aria-expanded={expanded} aria-label="show more">

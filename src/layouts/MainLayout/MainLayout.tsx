@@ -7,6 +7,7 @@ import { Sidebar } from '../../components/Sidebar/Sidebar';
 import { AppBar } from './AppBar';
 import { ITab } from './entity';
 import { TabPanel } from './TabPanel';
+import { Typography } from '@mui/material';
 
 import * as S from './styles';
 
@@ -26,7 +27,8 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
     },
   ];
 
-  const sidebarItems: ITab[] = [ // TODO: move to store
+  const sidebarItems: ITab[] = [
+    // TODO: move to store
     { id: 'item1', label: 'Label1' },
     { id: 'item2', label: 'Label2' },
     { id: 'item3', label: 'Label3' },
@@ -49,16 +51,8 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
       <S.AppBarSection>
         <S.AppBarLeft>
           <S.ButtonContainer>
-            <AppsIcon 
-              fontSize="medium" 
-              color='primary'
-              onClick={() => console.info('Apps button pushed!')} 
-            />
-            <ReplyIcon 
-              fontSize="medium" 
-              color='primary'
-              onClick={() => console.info('Back button pushed!')} 
-            />
+            <AppsIcon fontSize="medium" color="primary" onClick={() => console.info('Apps button pushed!')} />
+            <ReplyIcon fontSize="medium" color="primary" onClick={() => console.info('Back button pushed!')} />
           </S.ButtonContainer>
 
           <AppBar items={appBarItems} activeValue="display" />
@@ -66,8 +60,10 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
 
         <S.AppBarRight>
           <Avatar src="https://joeschmoe.io/api/v1/random" style={{ height: '28px', width: '28px' }} />
-          <S.Text>Антон Петров</S.Text>
-          <ExpandMoreIcon />
+          <Typography variant="body1" sx={{ margin: '0 0 0 8px' }}>
+            Антон Петров
+          </Typography>
+          <ExpandMoreIcon color="primary" />
         </S.AppBarRight>
       </S.AppBarSection>
 

@@ -37,10 +37,6 @@ export const AppBarRight = styled.div`
   align-items: center;
 `;
 
-export const Text = styled.p`
-  margin: 0 0 0 8px;
-`;
-
 export const MainSection = styled.div`
   display: flex;
 `;
