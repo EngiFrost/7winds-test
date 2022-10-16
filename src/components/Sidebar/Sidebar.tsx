@@ -11,10 +11,9 @@ import * as S from './styles';
 
 type SidebarProps = {
   items: ITab[];
-  activeValue: string;
 };
 
-export const Sidebar: FC<SidebarProps> = observer(({ items, activeValue }) => {
+export const Sidebar: FC<SidebarProps> = observer(({ items }) => {
   const [expanded, setExpanded] = useState(true);
 
   const handleChange = (newValue: string) => {
@@ -50,7 +49,7 @@ export const Sidebar: FC<SidebarProps> = observer(({ items, activeValue }) => {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <S.SidebarTabList>
           {items.map((item) => (
-            <SidebarTab key={item.id} label={item.label} icon={<DashboardIcon color="primary" />} isActive={mainLayoutStore.activeTab.id === item.id} onClick={() => handleChange(item.id)} />
+            <SidebarTab key={item.id} label={item.abbreviation} icon={<DashboardIcon color="primary" />} isActive={mainLayoutStore.activeTab.id === item.id} onClick={() => handleChange(item.id)} />
           ))}
         </S.SidebarTabList>
       </Collapse>

@@ -1,9 +1,8 @@
 import { Box, Tabs, Tab } from '@mui/material';
 import { FC, useState } from 'react';
-import { ITab } from '../../model/tab';
 
 type AppBarProps = {
-  items: ITab[],
+  items: {id: string, label: string}[], //FIXME:
   activeValue: string
 }
 
