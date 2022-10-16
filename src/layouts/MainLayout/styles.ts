@@ -14,7 +14,7 @@ export const AppBarSection = styled.div`
   padding: 0 20px;
   background-color: #27272a;
   box-sizing: border-box;
-  border: 1px solid #414144;
+  border-bottom: 1px solid #414144;
 `;
 
 export const AppBarLeft = styled.div`

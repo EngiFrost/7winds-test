@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
+import { Tabs } from '@mui/material';
 
-export const TabsWrapper = styled.div`
+export const TabsWrapper = styled(Tabs)`
   display: flex;
-  height: 44px;
+  min-height: 44px;
   width: calc(100vw - 234px);
   background-color: #27272a;
   border-bottom: 1px solid #414144;

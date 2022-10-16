@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
-  // TODO:
+ background-color: black;
+ height: 100% // TODO:
 `;
 
 export const TableHeader = styled.div`

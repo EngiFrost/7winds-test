@@ -21,9 +21,9 @@ export const AppBar: FC<AppBarProps> = ({items, activeValue}) => {
         textColor="primary"
         indicatorColor="primary"
         aria-label="appBar"
-        sx={{button: {padding: 0, margin: "0 14px"}}}
+        sx={{minHeight: "44px", button: {padding: 0, margin: "0 14px"}}}
       >
-        {items.map(item => <Tab value={item.id} label={item.label} key={item.id} />)}
+        {items.map(item => <Tab value={item.id} label={item.label} key={item.id} sx={{minHeight: '44px'}}/>)}
       </Tabs>
     </Box>
   );
