@@ -41,9 +41,7 @@ export const MainSection = styled.div`
   display: flex;
 `;
 
-export const ContentSection = styled.div``;
-
-export const TabsWrapper = styled.div`
-  width: 100%;
-  height: 44px;
+export const ContentSection = styled.div`
+  display: flex;
+  flex-direction: column;
 `;

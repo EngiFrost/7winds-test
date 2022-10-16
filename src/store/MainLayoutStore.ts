@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx';
-import type { ITab } from '../layouts/MainLayout/entity';
+import type { ITab } from '../model/tab';
 
 class MainLayoutStore {
   activeTab: ITab = { label: '', id: '' };
@@ -10,8 +10,11 @@ class MainLayoutStore {
   }
 
   setActiveTab(tab: ITab) {
-    this.activeTab = tab;
-    if (this.openedTabs.findIndex((t) => t.id === tab.id) !== -1) {
+    if (this.activeTab.id !== tab.id) {
+      this.activeTab = tab;
+    }
+
+    if (this.openedTabs.findIndex((t) => t.id === tab.id) === -1) {
       this.addTabToOpened(tab);
     }
   }
@@ -21,7 +24,9 @@ class MainLayoutStore {
   }
 
   removeTabFromOpened(tabId: string) {
-    this.openedTabs = this.openedTabs.filter((tab) => tab.id !== tabId);
+    const newOpenedTabs = this.openedTabs.filter((tab) => tab.id !== tabId);
+    this.openedTabs = newOpenedTabs;
+    this.activeTab = newOpenedTabs.pop() || { label: '', id: '' };
   }
 }
 

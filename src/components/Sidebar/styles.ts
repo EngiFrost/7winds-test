@@ -42,8 +42,4 @@ export const Icon = styled.div`
   height: 17px;
   width: 17px;
   margin-bottom: 7px;
-
-  & > svg {
-    fill: white;
-  }
 `;

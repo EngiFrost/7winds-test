@@ -1,6 +1,6 @@
 import { Box, Tabs, Tab } from '@mui/material';
 import { FC, useState } from 'react';
-import { ITab } from './entity';
+import { ITab } from '../../model/tab';
 
 type AppBarProps = {
   items: ITab[],
@@ -24,7 +24,7 @@ export const AppBar: FC<AppBarProps> = ({items, activeValue}) => {
         aria-label="appBar"
         sx={{button: {padding: 0, margin: "0 14px"}}}
       >
-        {items.map(item => <Tab value={item.id} label={item.label} />)}
+        {items.map(item => <Tab value={item.id} label={item.label} key={item.id} />)}
       </Tabs>
     </Box>
   );

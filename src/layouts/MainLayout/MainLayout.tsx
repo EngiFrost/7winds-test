@@ -5,8 +5,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Avatar } from '@mui/material';
 import { Sidebar } from '../../components/Sidebar/Sidebar';
 import { AppBar } from './AppBar';
-import { ITab } from './entity';
-import { TabPanel } from './TabPanel';
+import { ITab } from '../../model/tab';
+import { TabPanel } from '../../components/TabPanel/TabPanel';
 import { Typography } from '@mui/material';
 
 import * as S from './styles';

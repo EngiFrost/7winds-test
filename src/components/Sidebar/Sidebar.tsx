@@ -4,7 +4,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { observer } from 'mobx-react-lite';
 import { mainLayoutStore } from '../../store/MainLayoutStore';
-import { ITab } from '../../layouts/MainLayout/entity';
+import { ITab } from '../../model/tab';
 import { SidebarTab } from './SidebarTab';
 
 import * as S from './styles';
@@ -51,7 +51,13 @@ export const Sidebar: FC<SidebarProps> = observer(({ items, activeValue }) => {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <S.SidebarTabList>
           {items.map((item) => (
-            <SidebarTab key={item.id} label={item.label} icon={<DashboardIcon />} isActive={value === item.id} onClick={() => handleChange(item.id)} />
+            <SidebarTab 
+              key={item.id} 
+              label={item.label} 
+              icon={<DashboardIcon color="primary" />} 
+              isActive={value === item.id} 
+              onClick={() => handleChange(item.id)} 
+            />
           ))}
         </S.SidebarTabList>
       </Collapse>
