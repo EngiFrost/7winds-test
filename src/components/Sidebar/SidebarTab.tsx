@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import { observer } from 'mobx-react-lite';
 import { FC, ReactNode } from 'react';
 
@@ -16,7 +17,7 @@ export const SidebarTab: FC<SidebarTabProps> = observer((props) => {
   return (
     <S.TabWrapper isActive={isActive} onClick={onClick}>
       <S.Icon>{icon}</S.Icon>
-      <S.TabLabel>{label}</S.TabLabel>
+      <Typography variant='body2'>{label}</Typography>
     </S.TabWrapper>
   );
 });

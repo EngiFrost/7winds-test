@@ -23,8 +23,14 @@ const theme = createTheme({
     },
     body1: {
       color: '#fff',
+      lineHeight: '18.2px',
+      letterSpacing: '0.1 px',
     },
     body2: {
+      color: '#fff',
+      lineHeight: '16.41px',
+    },
+    subtitle1: {
       color: '#A1A1AA',
       textTransform: 'none',
       lineHeight: '16.41px',

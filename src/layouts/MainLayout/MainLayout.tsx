@@ -60,10 +60,10 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
 
         <S.AppBarRight>
           <Avatar src="https://joeschmoe.io/api/v1/random" style={{ height: '28px', width: '28px' }} />
-          <Typography variant="body1" sx={{ margin: '0 0 0 8px' }}>
+          <Typography variant="body2" sx={{ margin: '0 0 0 8px' }}>
             Антон Петров
           </Typography>
-          <ExpandMoreIcon color="primary" />
+          <ExpandMoreIcon color="primary" sx={{'&:hover': {cursor: 'pointer'}}} />
         </S.AppBarRight>
       </S.AppBarSection>
 

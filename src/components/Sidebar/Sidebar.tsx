@@ -16,7 +16,7 @@ type SidebarProps = {
 
 export const Sidebar: FC<SidebarProps> = observer(({ items, activeValue }) => {
   const [expanded, setExpanded] = useState(true);
-  const [value, setValue] = useState('item5'); // FIXME:
+  const [value, setValue] = useState(activeValue);
 
   const handleChange = (newValue: string) => {
     setValue(newValue);
@@ -39,9 +39,7 @@ export const Sidebar: FC<SidebarProps> = observer(({ items, activeValue }) => {
     >
       <S.SidebarHeader>
         <S.SidebarText>
-          {/* <S.SidebarTitle>Название проекта</S.SidebarTitle>
-          <S.SidebarSubtitle>Аббревиатура</S.SidebarSubtitle> */}
-          <Typography variant="body2">Название проекта</Typography>
+          <Typography variant="subtitle1">Название проекта</Typography>
           <Typography variant="caption">Аббревиатура</Typography>
         </S.SidebarText>
 

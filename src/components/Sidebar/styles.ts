@@ -16,16 +16,6 @@ export const SidebarText = styled.div`
   color: #a1a1aa;
 `;
 
-export const SidebarTitle = styled.div`
-  font-size: 14px;
-  line-height: 16px;
-`;
-
-export const SidebarSubtitle = styled.div`
-  font-size: 10px;
-  line-height: 12px;
-`;
-
 export const SidebarTabList = styled.div`
   display: flex;
   flex-direction: column;
@@ -48,16 +38,10 @@ export const TabWrapper = styled.div<{ isActive: boolean }>`
   }
 `;
 
-export const TabLabel = styled.div`
-  size: 14px;
-  line-height: 17px;
-  color: white;
-`;
-
 export const Icon = styled.div`
   height: 17px;
   width: 17px;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
 
   & > svg {
     fill: white;
