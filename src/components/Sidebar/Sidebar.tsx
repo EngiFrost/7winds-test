@@ -28,7 +28,8 @@ export const Sidebar: FC<SidebarProps> = observer(({ items }) => {
     <Box
       sx={{
         width: '234px',
-        height: 'calc(100vh - 44px)',
+        minWidth: '234px',
+        height: 'calc(100vh - 44px)', // FIXME:
         backgroundColor: '#27272A',
         borderLeft: '1px solid #414144',
         borderRight: '1px solid #414144',

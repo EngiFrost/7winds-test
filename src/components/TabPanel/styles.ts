@@ -4,7 +4,7 @@ import { Tabs } from '@mui/material';
 export const TabsWrapper = styled(Tabs)`
   display: flex;
   min-height: 44px;
-  width: calc(100vw - 234px);
+  width: calc(100vw - 234px); // FIXME:
   background-color: #27272a;
   border-bottom: 1px solid #414144;
   box-sizing: border-box;
