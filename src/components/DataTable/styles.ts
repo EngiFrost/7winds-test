@@ -12,4 +12,9 @@ export const Wrapper = styled.div`
   td {
     padding: 21px 12px;
   }
+
+  th,
+  td {
+    border-color: #414144;
+  }
 `;
