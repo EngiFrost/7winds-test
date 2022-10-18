@@ -1,10 +1,10 @@
 import { MainLayout } from '../layouts/MainLayout/MainLayout';
-import { Table } from './Table/Table';
+import { DataTable } from './DataTable/DataTable';
 
 function App() {
   return (
     <MainLayout>
-      <Table />
+      <DataTable />
     </MainLayout>
   );
 }

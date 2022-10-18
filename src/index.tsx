@@ -21,8 +21,12 @@ const theme = createTheme({
       fontSize: 14,
       color: '#fff',
     },
-
     body1: {
+      lineHeight: '18.2px',
+      letterSpacing: '0.1 px',
+    },
+    h3: {
+      color: '#A1A1AA',
       lineHeight: '18.2px',
       letterSpacing: '0.1 px',
     },
