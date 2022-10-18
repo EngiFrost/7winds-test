@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Typography, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
-import { RowData } from './entity';
+import { RowData } from '../../model/row';
 
 import * as S from './styles';
 

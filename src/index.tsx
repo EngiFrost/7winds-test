@@ -45,6 +45,8 @@ const theme = createTheme({
       color: '#fff',
       fontSize: 18,
       lineHeight: '21.09px',
+      fontWeight: 400,
+      letterSpacing: 'normal',
     },
     subtitle1: {
       color: '#A1A1AA',
@@ -54,6 +56,8 @@ const theme = createTheme({
       color: '#A1A1AA',
       fontSize: 18,
       lineHeight: '21.09px',
+      fontWeight: 400,
+      letterSpacing: 'normal',
     },
   },
 });

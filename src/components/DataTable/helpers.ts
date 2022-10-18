@@ -1,4 +1,4 @@
-import { NewRowData, RowData } from './entity'
+import { NewRowData, RowData } from '../../model/row'
 
 // функция для сохранения строки
 export function saveRow(rowData: NewRowData, storage: RowData[]) {
