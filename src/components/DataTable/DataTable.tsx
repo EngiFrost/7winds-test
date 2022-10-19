@@ -3,6 +3,7 @@ import { Typography, Table, TableBody, TableCell, TableHead, TableRow } from '@m
 import { RowData } from '../../model/row';
 
 import * as S from './styles';
+import { Level } from '../Level/Level';
 
 const rows: RowData[] = [
   {
@@ -66,7 +67,9 @@ export const DataTable: FC = () => {
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-              <TableCell>{/* TODO: level component*/}</TableCell>
+              <TableCell>
+                <Level />
+              </TableCell>
               <TableCell>{row.title}</TableCell>
               <TableCell>{row.unit}</TableCell>
               <TableCell>{row.quantity}</TableCell>

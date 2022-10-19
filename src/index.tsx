@@ -6,7 +6,7 @@ import { ThemeProvider } from '@mui/system';
 
 import { createTheme } from '@mui/material/styles';
 
-const theme = createTheme({
+const theme = createTheme({ // FIXME:
   palette: {
     primary: {
       main: '#fff',
