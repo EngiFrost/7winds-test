@@ -24,7 +24,7 @@ const rows: RowData[] = [
     unitPrice: 1,
     price: 1232123,
     parent: 1,
-    type: 'row',
+    type: 'level',
   },
   {
     id: 3,
@@ -41,25 +41,25 @@ const rows: RowData[] = [
 export const DataTable: FC = () => {
   return (
     <S.Wrapper>
-      <Table sx={{ minWidth: 800, backgroundColor: '#202124', borderCollapse: 'unset' }}>
+      <Table sx={{ backgroundColor: '#202124', borderCollapse: 'unset' }}>
         <TableHead sx={{ maxHeight: 42 }}>
           <TableRow>
-            <TableCell width={86}>
+            <TableCell width={110} sx={{minWidth: '110px'}}>
               <Typography variant="h3">Уровень</Typography>
             </TableCell>
-            <TableCell sx={{ minWidth: 176 }}>
+            <TableCell sx={{ minWidth: '200px' }}>
               <Typography variant="h3">Наименование работ</Typography>
             </TableCell>
-            <TableCell width={176}>
+            <TableCell width={176} sx={{minWidth: '200px'}}>
               <Typography variant="h3">Ед. изм.</Typography>
             </TableCell>
-            <TableCell width={176}>
+            <TableCell width={176} sx={{minWidth: '200px'}}>
               <Typography variant="h3">Количество</Typography>
             </TableCell>
-            <TableCell width={176}>
+            <TableCell width={176} sx={{minWidth: '200px'}}>
               <Typography variant="h3">Цена за ед.</Typography>
             </TableCell>
-            <TableCell width={176}>
+            <TableCell width={176} sx={{minWidth: '200px'}}>
               <Typography variant="h3">Стоимость</Typography>
             </TableCell>
           </TableRow>
@@ -68,7 +68,7 @@ export const DataTable: FC = () => {
           {rows.map((row) => (
             <TableRow key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell>
-                <Level />
+                <Level parent={row.parent} type={row.type}/>
               </TableCell>
               <TableCell>{row.title}</TableCell>
               <TableCell>{row.unit}</TableCell>
