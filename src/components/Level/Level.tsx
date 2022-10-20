@@ -1,45 +1,49 @@
 import { FC } from 'react';
+import { LevelIcon } from './LevelIcon';
 
 import * as S from './styles';
 
 type LevelProps = {
+  id: number;
   parent: number | null; // id уровня, в котором находится (либо null для первого уровня)
   type: 'level' | 'row';
 };
 
-export const Level: FC<LevelProps> = ({ parent, type }) => {
-  return (
-    <S.Wrapper>
-      {!parent ? (
-        <>
-          <Level1Icon />
-          <S.HiddenContent>
-            <Level2Icon />
-            <FileIcon />
-          </S.HiddenContent>
-        </>
-      ) : type === 'level' ? (
-        <>
-          <Level2Icon />
-          <S.HiddenContent>
-            <FileIcon />
-          </S.HiddenContent>
-        </>
-      ) : (
-        <FileIcon />
-      )}
-    </S.Wrapper>
-  );
+export const Level: FC<LevelProps> = ({ id, parent, type }) => {
+  const currentLevelType: number = !parent ? 1 : type === 'level' ? 2 : 3;
+
+  const createRow = () => {
+    // TODO:
+  };
+
+  const renderContent = () => {
+    switch (currentLevelType) {
+      case 1:
+        return (
+          <>
+            <LevelIcon type="l1" onClick={createRow} />
+            <LevelIcon type="l2" onClick={createRow} isHidden />
+            <LevelIcon type="f" onClick={createRow} isHidden />
+          </>
+        );
+      case 2:
+        return (
+          <>
+            <LevelIcon type="l2" onClick={createRow} />
+            <LevelIcon type="f" onClick={createRow} isHidden />
+          </>
+        );
+      case 3:
+        return <LevelIcon type="f" onClick={createRow} />;
+    }
+  };
+
+  return <S.Wrapper>{renderContent()}</S.Wrapper>;
 };
 
-const Level1Icon = () => {
-  return <img src={`${process.env.PUBLIC_URL}/svg/level_1_folder.svg`} alt="level 1" />;
-};
-
-const Level2Icon = () => {
-  return <img src={`${process.env.PUBLIC_URL}/svg/level_2_folder.svg`} alt="level 2" />;
-};
-
-const FileIcon = () => {
-  return <img src={`${process.env.PUBLIC_URL}/svg/file.svg`} alt="file" />;
-};
+/*
+level 1 -- left position
+level 2 -- middle position
+file with parent leval 1 -- middle position
+file with parent leval 2 -- left position
+*/

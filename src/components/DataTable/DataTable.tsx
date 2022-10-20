@@ -68,7 +68,7 @@ export const DataTable: FC = () => {
           {rows.map((row) => (
             <TableRow key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell>
-                <Level parent={row.parent} type={row.type}/>
+                <Level id={row.id} parent={row.parent} type={row.type}/>
               </TableCell>
               <TableCell>{row.title}</TableCell>
               <TableCell>{row.unit}</TableCell>
