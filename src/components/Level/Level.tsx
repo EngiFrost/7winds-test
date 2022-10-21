@@ -10,7 +10,7 @@ type LevelProps = {
 };
 
 export const Level: FC<LevelProps> = ({ id, parent, type }) => {
-  const currentLevelType: number = !parent ? 1 : type === 'level' ? 2 : 3;
+  const currentLevelType: 1 | 2 | 3 = !parent ? 1 : type === 'level' ? 2 : 3;
 
   const createRow = () => {
     // TODO:
@@ -38,7 +38,7 @@ export const Level: FC<LevelProps> = ({ id, parent, type }) => {
     }
   };
 
-  return <S.Wrapper>{renderContent()}</S.Wrapper>;
+  return <S.Wrapper level={currentLevelType}>{renderContent()}</S.Wrapper>;
 };
 
 /*
