@@ -17,6 +17,12 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const Icon = styled.img`
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 export const HiddenContent = styled.div`
   display: none;
 `;
