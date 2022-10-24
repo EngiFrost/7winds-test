@@ -1,3 +1,6 @@
+
+export const ROW_HEIGHT = 60
+
 export interface NewRowData {
   title: string // Наименование работ
   unit: string // Ед. изм.
