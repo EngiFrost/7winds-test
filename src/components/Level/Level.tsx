@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { LevelConnector } from './LevelConnector';
 import { LevelIcon } from './LevelIcon';
 
 import * as S from './styles';
@@ -20,25 +21,40 @@ export const Level: FC<LevelProps> = ({ id, parent, type }) => {
     switch (currentLevelType) {
       case 1:
         return (
-          <>
+          <S.IconContainer>
             <LevelIcon type="l1" onClick={createRow} />
             <LevelIcon type="l2" onClick={createRow} isHidden />
             <LevelIcon type="f" onClick={createRow} isHidden />
-          </>
+          </S.IconContainer>
         );
       case 2:
         return (
-          <>
+          <S.IconContainer>
             <LevelIcon type="l2" onClick={createRow} />
             <LevelIcon type="f" onClick={createRow} isHidden />
-          </>
+          </S.IconContainer>
         );
       case 3:
-        return <LevelIcon type="f" onClick={createRow} />;
+        return (
+          <S.IconContainer>
+            <LevelIcon type="f" onClick={createRow} />
+          </S.IconContainer>
+        );
     }
   };
 
-  return <S.Wrapper level={currentLevelType}>{renderContent()}</S.Wrapper>;
+  return (
+    <S.Wrapper level={currentLevelType}>
+      {currentLevelType !== 1 && (
+        <>
+          <LevelConnector multiplier={1 /* FIXME: */} />
+          <LevelConnector isHorizontal />
+        </>
+      )}
+
+      {renderContent()}
+    </S.Wrapper>
+  );
 };
 
 /*

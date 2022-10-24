@@ -4,18 +4,18 @@ import * as S from './styles';
 
 type VerticalLevelConnector = {
   multiplier: number;
-  isHorizontal: false;
+  isHorizontal?: false;
 };
 
 type HorizontalLevelConnector = {
-  multiplier: null;
+  multiplier?: null;
   isHorizontal: boolean;
 };
 
-type LevelConnectorProps = VerticalLevelConnector | HorizontalLevelConnector;
+type LevelConnectorProps = VerticalLevelConnector | HorizontalLevelConnector; // FIXME: use generics
 
 export const LevelConnector: FC<LevelConnectorProps> = (props) => {
-  const { multiplier, isHorizontal } = props;
+  const { multiplier = null, isHorizontal = false } = props;
 
   return <S.Connector multiplier={multiplier} isHorizontal={isHorizontal} />;
 };
