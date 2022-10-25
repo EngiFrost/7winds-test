@@ -39,12 +39,23 @@ class TableStore {
     makeAutoObservable(this);
   }
 
+  // функция для сортировки строк в зависимости от родителя
+  sortRows() {
+    /* TODO: 
+      step1: l1 -> (l2 -> files) or files
+      step2: parent: null -> parent(l1 id) (levels b4 files)
+      step3: parent(l2 id) -> files
+    */
+  }
+
   // функция для сохранения строки
   saveRow(rowData: NewRowData) {
     const index = Math.max(...this.rows.map((v) => v.id), 0) + 1;
     const row: RowData = { id: index, ...rowData };
 
     this.rows.push(row);
+    this.sortRows();
+
     return {
       current: row,
       changed: this.recalculation(row.parent, this.rows),
@@ -54,7 +65,9 @@ class TableStore {
   // функция для изменения строки
   editRow(row: RowData) {
     const index = this.rows.findIndex((v) => v.id === row.id);
+
     this.rows.splice(index, 1, row);
+    this.sortRows();
 
     return {
       current: row,

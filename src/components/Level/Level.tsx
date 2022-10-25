@@ -1,4 +1,6 @@
 import { FC } from 'react';
+import { ELevelIcon } from '../../model/level';
+import { tableStore } from '../../store/TableStore';
 import { LevelConnector } from './LevelConnector';
 import { LevelIcon } from './LevelIcon';
 
@@ -13,8 +15,17 @@ type LevelProps = {
 export const Level: FC<LevelProps> = ({ id, parent, type }) => {
   const currentLevelType: 1 | 2 | 3 = !parent ? 1 : type === 'level' ? 2 : 3;
 
-  const createRow = () => {
-    // TODO:
+  const createRow = (iconType: keyof typeof ELevelIcon) => {
+    // FIXME:
+    tableStore.saveRow({
+      title: '',
+      unit: '',
+      quantity: 0,
+      unitPrice: 0,
+      price: 0,
+      parent: iconType === 'l1' ? null : id,
+      type: iconType === 'f' ? 'row' : 'level',
+    });
   };
 
   const renderContent = () => {
@@ -22,22 +33,22 @@ export const Level: FC<LevelProps> = ({ id, parent, type }) => {
       case 1:
         return (
           <S.IconContainer>
-            <LevelIcon type="l1" onClick={createRow} />
-            <LevelIcon type="l2" onClick={createRow} isHidden />
-            <LevelIcon type="f" onClick={createRow} isHidden />
+            <LevelIcon type="l1" onClick={() => createRow('l1')} />
+            <LevelIcon type="l2" onClick={() => createRow('l2')} isHidden />
+            <LevelIcon type="f" onClick={() => createRow('f')} isHidden />
           </S.IconContainer>
         );
       case 2:
         return (
           <S.IconContainer>
-            <LevelIcon type="l2" onClick={createRow} />
-            <LevelIcon type="f" onClick={createRow} isHidden />
+            <LevelIcon type="l2" onClick={() => createRow('l2')} />
+            <LevelIcon type="f" onClick={() => createRow('f')} isHidden />
           </S.IconContainer>
         );
       case 3:
         return (
           <S.IconContainer>
-            <LevelIcon type="f" onClick={createRow} />
+            <LevelIcon type="f" onClick={() => createRow('f')} />
           </S.IconContainer>
         );
     }
@@ -56,10 +67,3 @@ export const Level: FC<LevelProps> = ({ id, parent, type }) => {
     </S.Wrapper>
   );
 };
-
-/*
-level 1 -- left position
-level 2 -- middle position
-file with parent leval 1 -- middle position
-file with parent leval 2 -- left position
-*/
