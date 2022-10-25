@@ -39,7 +39,12 @@ class TableStore {
     makeAutoObservable(this);
   }
 
-  // функция для сортировки строк в зависимости от родителя
+  // получение позиции строки для отрисовки коннектора
+  getRowPosition(rowId: number, parentId: number) {
+    // TODO: get row position by parent id
+  }
+
+  // иерархическая сортировка строк
   sortRows() {
     /* TODO: 
       step1: l1 -> (l2 -> files) or files
@@ -48,7 +53,7 @@ class TableStore {
     */
   }
 
-  // функция для сохранения строки
+  // сохранение строки
   saveRow(rowData: NewRowData) {
     const index = Math.max(...this.rows.map((v) => v.id), 0) + 1;
     const row: RowData = { id: index, ...rowData };
@@ -62,7 +67,7 @@ class TableStore {
     };
   }
 
-  // функция для изменения строки
+  // изменение строки
   editRow(row: RowData) {
     const index = this.rows.findIndex((v) => v.id === row.id);
 
@@ -75,7 +80,7 @@ class TableStore {
     };
   }
 
-  recalculation(parentID: number | null, storage: RowData[]) {
+  recalculation(parentID: number | null, storage: RowData[]) { // TODO: use for price change
     const rows = [...storage];
     const changedRows: RowData[] = [];
 

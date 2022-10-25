@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { ELevelIcon } from '../../model/level';
 import { tableStore } from '../../store/TableStore';
 import { LevelConnector } from './LevelConnector';
 import { LevelIcon } from './LevelIcon';
@@ -14,17 +13,17 @@ type LevelProps = {
 
 export const Level: FC<LevelProps> = ({ id, parent, type }) => {
   const currentLevelType: 1 | 2 | 3 = !parent ? 1 : type === 'level' ? 2 : 3;
+  // TODO: level position const --> file can be a child of l1!
 
-  const createRow = (iconType: keyof typeof ELevelIcon) => {
-    // FIXME:
+  const createRow = (iconType: 1 | 2 | 3) => {
     tableStore.saveRow({
-      title: '',
-      unit: '',
-      quantity: 0,
-      unitPrice: 0,
-      price: 0,
-      parent: iconType === 'l1' ? null : id,
-      type: iconType === 'f' ? 'row' : 'level',
+      title: '', // TODO: from user input
+      unit: '', // TODO: from user input
+      quantity: 0, // TODO: from user input
+      unitPrice: 0, // TODO: from user input
+      price: 0, // TODO: from user input
+      parent: iconType === 1 ?  null : iconType === 2 ? parent : id,
+      type: iconType === 3 ? 'row' : 'level',
     });
   };
 
@@ -33,22 +32,22 @@ export const Level: FC<LevelProps> = ({ id, parent, type }) => {
       case 1:
         return (
           <S.IconContainer>
-            <LevelIcon type="l1" onClick={() => createRow('l1')} />
-            <LevelIcon type="l2" onClick={() => createRow('l2')} isHidden />
-            <LevelIcon type="f" onClick={() => createRow('f')} isHidden />
+            <LevelIcon type="l1" onClick={createRow} />
+            <LevelIcon type="l2" onClick={createRow} isHidden />
+            <LevelIcon type="f" onClick={createRow} isHidden />
           </S.IconContainer>
         );
       case 2:
         return (
           <S.IconContainer>
-            <LevelIcon type="l2" onClick={() => createRow('l2')} />
-            <LevelIcon type="f" onClick={() => createRow('f')} isHidden />
+            <LevelIcon type="l2" onClick={createRow} />
+            <LevelIcon type="f" onClick={createRow} isHidden />
           </S.IconContainer>
         );
       case 3:
         return (
           <S.IconContainer>
-            <LevelIcon type="f" onClick={() => createRow('f')} />
+            <LevelIcon type="f" onClick={createRow} />
           </S.IconContainer>
         );
     }
