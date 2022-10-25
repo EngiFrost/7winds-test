@@ -2,32 +2,63 @@ import { makeAutoObservable } from 'mobx';
 import { NewRowData, RowData } from '../model/row';
 
 class TableStore {
-  rows: RowData[] = []
+  rows: RowData[] = [
+    {
+      id: 1,
+      title: 'Test title 1',
+      unit: 'Litres',
+      quantity: 1234,
+      unitPrice: 22323,
+      price: 123425,
+      parent: null,
+      type: 'level',
+    },
+    {
+      id: 2,
+      title: 'Test title 2',
+      unit: 'Adasd',
+      quantity: 232,
+      unitPrice: 1,
+      price: 1232123,
+      parent: 1,
+      type: 'level',
+    },
+    {
+      id: 3,
+      title: 'Test title 3',
+      unit: 'Aaaaa',
+      quantity: 1,
+      unitPrice: 2,
+      price: 3,
+      parent: 1,
+      type: 'row',
+    },
+  ];
 
   constructor() {
     makeAutoObservable(this);
   }
 
   // функция для сохранения строки
-  saveRow(rowData: NewRowData, storage: RowData[]) {
-    const index = Math.max(...storage.map((v) => v.id), 0) + 1;
+  saveRow(rowData: NewRowData) {
+    const index = Math.max(...this.rows.map((v) => v.id), 0) + 1;
     const row: RowData = { id: index, ...rowData };
 
-    storage.push(row);
+    this.rows.push(row);
     return {
       current: row,
-      changed: this.recalculation(row.parent, storage),
+      changed: this.recalculation(row.parent, this.rows),
     };
   }
 
   // функция для изменения строки
-  editRow(row: RowData, storage: RowData[]) {
-    const index = storage.findIndex((v) => v.id === row.id);
-    storage.splice(index, 1, row);
+  editRow(row: RowData) {
+    const index = this.rows.findIndex((v) => v.id === row.id);
+    this.rows.splice(index, 1, row);
 
     return {
       current: row,
-      changed: this.recalculation(row.parent, storage),
+      changed: this.recalculation(row.parent, this.rows),
     };
   }
 

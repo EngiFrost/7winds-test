@@ -1,74 +1,42 @@
 import { FC } from 'react';
+import { observer } from 'mobx-react-lite';
 import { Typography, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
-import { RowData } from '../../model/row';
+import { Level } from '../Level/Level';
+import { tableStore } from '../../store/TableStore';
 
 import * as S from './styles';
-import { Level } from '../Level/Level';
 
-const rows: RowData[] = [
-  {
-    id: 1,
-    title: 'Test title 1',
-    unit: 'Litres',
-    quantity: 1234,
-    unitPrice: 22323,
-    price: 123425,
-    parent: null,
-    type: 'level',
-  },
-  {
-    id: 2,
-    title: 'Test title 2',
-    unit: 'Adasd',
-    quantity: 232,
-    unitPrice: 1,
-    price: 1232123,
-    parent: 1,
-    type: 'level',
-  },
-  {
-    id: 3,
-    title: 'Test title 3',
-    unit: 'Aaaaa',
-    quantity: 1,
-    unitPrice: 2,
-    price: 3,
-    parent: 1,
-    type: 'row',
-  },
-];
-
-export const DataTable: FC = () => {
+export const DataTable: FC = observer(() => {
   return (
     <S.Wrapper>
       <Table sx={{ backgroundColor: '#202124', borderCollapse: 'unset' }}>
         <TableHead sx={{ maxHeight: 42 }}>
           <TableRow>
-            <TableCell width={110} sx={{minWidth: '110px'}}>
+            <TableCell width={110} sx={{ minWidth: '110px' }}>
               <Typography variant="h3">Уровень</Typography>
             </TableCell>
             <TableCell sx={{ minWidth: '200px' }}>
               <Typography variant="h3">Наименование работ</Typography>
             </TableCell>
-            <TableCell width={176} sx={{minWidth: '200px'}}>
+            <TableCell width={176} sx={{ minWidth: '200px' }}>
               <Typography variant="h3">Ед. изм.</Typography>
             </TableCell>
-            <TableCell width={176} sx={{minWidth: '200px'}}>
+            <TableCell width={176} sx={{ minWidth: '200px' }}>
               <Typography variant="h3">Количество</Typography>
             </TableCell>
-            <TableCell width={176} sx={{minWidth: '200px'}}>
+            <TableCell width={176} sx={{ minWidth: '200px' }}>
               <Typography variant="h3">Цена за ед.</Typography>
             </TableCell>
-            <TableCell width={176} sx={{minWidth: '200px'}}>
+            <TableCell width={176} sx={{ minWidth: '200px' }}>
               <Typography variant="h3">Стоимость</Typography>
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {tableStore.rows.map((row) => (
             <TableRow key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell>
-                <Level id={row.id} parent={row.parent} type={row.type}/>
+                <Level id={row.id} parent={row.parent} type={row.type} />
               </TableCell>
               <TableCell>{row.title}</TableCell>
               <TableCell>{row.unit}</TableCell>
@@ -81,4 +49,4 @@ export const DataTable: FC = () => {
       </Table>
     </S.Wrapper>
   );
-};
+});
