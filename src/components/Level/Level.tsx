@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { TLevel } from '../../model/level';
 import { tableStore } from '../../store/TableStore';
 import { LevelConnector } from './LevelConnector';
 import { LevelIcon } from './LevelIcon';
@@ -12,23 +13,23 @@ type LevelProps = {
 };
 
 export const Level: FC<LevelProps> = ({ id, parent, type }) => {
-  const currentLevelType: 1 | 2 | 3 = !parent ? 1 : type === 'level' ? 2 : 3;
-  const levelPosition: 1 | 2 | 3 = !parent ? 1 : tableStore.getRow(parent).parent === null ? 2 : 3
+  const currentTLevel: TLevel = !parent ? 1 : type === 'level' ? 2 : 3;
+  const levelPosition: TLevel = !parent ? 1 : tableStore.getRow(parent).parent === null ? 2 : 3
 
-  const createRow = (iconType: 1 | 2 | 3) => {
+  const createRow = (iconType: TLevel) => {
     tableStore.saveRow({
       title: '', // TODO: from user input
       unit: '', // TODO: from user input
       quantity: 0, // TODO: from user input
       unitPrice: 0, // TODO: from user input
       price: 0, // TODO: from user input
-      parent: iconType === currentLevelType ? parent : id,
+      parent: iconType === currentTLevel ? parent : id,
       type: iconType === 3 ? 'row' : 'level',
     });
   };
 
   const renderContent = () => {
-    switch (currentLevelType) {
+    switch (currentTLevel) {
       case 1:
         return (
           <S.IconContainer>
@@ -55,7 +56,7 @@ export const Level: FC<LevelProps> = ({ id, parent, type }) => {
 
   return (
     <S.Wrapper position={levelPosition}>
-      {currentLevelType !== 1 && (
+      {currentTLevel !== 1 && (
         <>
           <LevelConnector multiplier={1 /* FIXME: */} />
           <LevelConnector isHorizontal />

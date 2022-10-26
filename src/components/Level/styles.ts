@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
+import { TLevel } from '../../model/level';
 import { ROW_HEIGHT } from '../../model/row';
 
-export const Wrapper = styled.div<{ position: 1 | 2 | 3 }>`
+export const Wrapper = styled.div<{ position: TLevel }>`
   position: relative;
   width: fit-content;
   height: fit-content;

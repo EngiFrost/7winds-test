@@ -1,19 +1,12 @@
 import { FC } from 'react';
-import { ELevelIcon } from '../../model/level';
+import { ELevelIcon, TLevel, typeMap } from '../../model/level';
 
 import * as S from './styles';
 
 type LevelIconProps = {
   type: keyof typeof ELevelIcon;
-  onClick: (iconType: 1 | 2 | 3) => void;
+  onClick: (iconType: TLevel) => void;
   isHidden?: boolean;
-};
-
-const typeMap: Record<keyof typeof ELevelIcon, 1 | 2 | 3> = {
-  // FIXME: move to entity
-  l1: 1,
-  l2: 2,
-  f: 3,
 };
 
 export const LevelIcon: FC<LevelIconProps> = ({ type, onClick, isHidden = false }) => {
