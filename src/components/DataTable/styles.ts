@@ -3,8 +3,16 @@ import { ROW_HEIGHT } from '../../model/row';
 
 export const Wrapper = styled.div`
   background-color: #202124;
-  height: 100%;
+  height: calc(100vh - 88px);
   padding: 0 10px;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 
   th,
   td {
