@@ -13,7 +13,7 @@ type LevelProps = {
 
 export const Level: FC<LevelProps> = ({ id, parent, type }) => {
   const currentLevelType: 1 | 2 | 3 = !parent ? 1 : type === 'level' ? 2 : 3;
-  // TODO: level position const --> file can be a child of l1!
+  const levelPosition: 1 | 2 | 3 = !parent ? 1 : tableStore.getRow(parent).parent === null ? 2 : 3
 
   const createRow = (iconType: 1 | 2 | 3) => {
     tableStore.saveRow({
@@ -22,7 +22,7 @@ export const Level: FC<LevelProps> = ({ id, parent, type }) => {
       quantity: 0, // TODO: from user input
       unitPrice: 0, // TODO: from user input
       price: 0, // TODO: from user input
-      parent: iconType === 1 ?  null : iconType === 2 ? parent : id,
+      parent: iconType === currentLevelType ? parent : id,
       type: iconType === 3 ? 'row' : 'level',
     });
   };
@@ -54,7 +54,7 @@ export const Level: FC<LevelProps> = ({ id, parent, type }) => {
   };
 
   return (
-    <S.Wrapper level={currentLevelType}>
+    <S.Wrapper position={levelPosition}>
       {currentLevelType !== 1 && (
         <>
           <LevelConnector multiplier={1 /* FIXME: */} />

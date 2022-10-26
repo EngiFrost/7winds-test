@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 import { ROW_HEIGHT } from '../../model/row';
 
-export const Wrapper = styled.div<{ level: 1 | 2 | 3 }>`
+export const Wrapper = styled.div<{ position: 1 | 2 | 3 }>`
   position: relative;
   width: fit-content;
   height: fit-content;
 
   ${(p) => {
-    switch (p.level) {
+    switch (p.position) {
       case 1:
         return 'margin-left: 0;';
       case 2:

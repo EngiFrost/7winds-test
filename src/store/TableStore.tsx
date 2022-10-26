@@ -39,6 +39,11 @@ class TableStore {
     makeAutoObservable(this);
   }
 
+  // получение строки по id
+  getRow(rowId: number) {
+    return this.rows.find(row => row.id === rowId)!
+  }
+
   // получение позиции строки для отрисовки коннектора
   getRowPosition(rowId: number, parentId: number) {
     // TODO: get row position by parent id
