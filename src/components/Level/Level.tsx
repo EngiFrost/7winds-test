@@ -58,7 +58,7 @@ export const Level: FC<LevelProps> = ({ id, parent, type }) => {
     <S.Wrapper position={levelPosition}>
       {currentTLevel !== 1 && (
         <>
-          <LevelConnector multiplier={1 /* FIXME: */} />
+          <LevelConnector multiplier={tableStore.getRowPosition(id, parent!)} />
           <LevelConnector isHorizontal />
         </>
       )}

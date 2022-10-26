@@ -46,11 +46,12 @@ class TableStore {
 
   // получение позиции строки для отрисовки коннектора
   getRowPosition(rowId: number, parentId: number) {
-    // TODO: get row position by parent id
+    return this.rows.findIndex((row) => row.id === rowId) - this.rows.findIndex((row) => row.id === parentId);
   }
 
   // иерархическая сортировка строк
-  sortRows() { // FIXME: make it simple!
+  sortRows() {
+    // FIXME: make it simple!
     const step1 = this.rows.filter((row) => row.parent === null);
     const step2: RowData[] = [];
 
