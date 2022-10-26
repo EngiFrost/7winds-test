@@ -41,7 +41,7 @@ class TableStore {
 
   // получение строки по id
   getRow(rowId: number) {
-    return this.rows.find(row => row.id === rowId)!
+    return this.rows.find((row) => row.id === rowId)!;
   }
 
   // получение позиции строки для отрисовки коннектора
@@ -50,12 +50,26 @@ class TableStore {
   }
 
   // иерархическая сортировка строк
-  sortRows() {
-    /* TODO: 
-      step1: l1 -> (l2 -> files) or files
-      step2: parent: null -> parent(l1 id) (levels b4 files)
-      step3: parent(l2 id) -> files
-    */
+  sortRows() { // FIXME: make it simple!
+    const step1 = this.rows.filter((row) => row.parent === null);
+    const step2: RowData[] = [];
+
+    step1.forEach((item) => {
+      const childs = this.rows.filter((row) => row.parent === item.id).sort((a, b) => (a.type === b.type ? (a.id < b.id ? 1 : -1) : a.type === 'row' ? 1 : -1));
+      step2.push(item, ...childs);
+    });
+
+    const step3: RowData[] = [];
+    step2.forEach((item) => {
+      if (item.parent !== null && item.type === 'level') {
+        const childs = this.rows.filter((row) => row.parent === item.id).sort((a, b) => (a.id < b.id ? 1 : -1));
+        step3.push(item, ...childs);
+      } else {
+        step3.push(item);
+      }
+    });
+
+    this.rows = step3;
   }
 
   // сохранение строки
@@ -85,7 +99,8 @@ class TableStore {
     };
   }
 
-  recalculation(parentID: number | null, storage: RowData[]) { // TODO: use for price change
+  recalculation(parentID: number | null, storage: RowData[]) {
+    // TODO: use for price change
     const rows = [...storage];
     const changedRows: RowData[] = [];
 

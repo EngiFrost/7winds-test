@@ -49,18 +49,19 @@ export const HiddenContent = styled.div`
 `;
 
 export const Connector = styled.div<{ multiplier: number | null; isHorizontal: boolean }>`
-  border: .5px solid #c6c6c6;
+  border: 0.5px solid #c6c6c6;
   background-color: #c6c6c6;
+  z-index: 0;
 
   position: absolute;
-  left: -9.5px;
+  left: -9px;
 
   ${(p) =>
     p.multiplier &&
     `
-    height: calc(${p.multiplier * ROW_HEIGHT}px - 7px); 
+    height: calc(${p.multiplier * ROW_HEIGHT}px - 8px); 
     width: 0;
-    top: calc(50% - ${p.multiplier * ROW_HEIGHT}px + 6px);
+    top: calc(50% - ${p.multiplier * ROW_HEIGHT}px + 7px);
   `}
 
   ${(p) =>
