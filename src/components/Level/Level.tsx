@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { TLevel } from '../../model/level';
+import { RowType } from '../../model/row';
 import { tableStore } from '../../store/TableStore';
 import { LevelConnector } from './LevelConnector';
 import { LevelIcon } from './LevelIcon';
@@ -9,7 +10,7 @@ import * as S from './styles';
 type LevelProps = {
   id: number;
   parent: number | null; // id уровня, в котором находится (либо null для первого уровня)
-  type: 'level' | 'row';
+  type: RowType
 };
 
 export const Level: FC<LevelProps> = ({ id, parent, type }) => {

@@ -34,6 +34,7 @@ class TableStore {
       type: 'row',
     },
   ];
+  editing: number | null = null;
 
   constructor() {
     makeAutoObservable(this);

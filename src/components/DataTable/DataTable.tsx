@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { Typography, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import { Level } from '../Level/Level';
 import { tableStore } from '../../store/TableStore';
+import { RowForm } from '../RowForm/RowForm';
 
 import * as S from './styles';
 
@@ -32,16 +33,23 @@ export const DataTable: FC = observer(() => {
             </TableCell>
           </TableRow>
         </TableHead>
+
         <TableBody>
           {tableStore.rows.map((row) => (
             <TableRow key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell>
                 <Level id={row.id} parent={row.parent} type={row.type} />
               </TableCell>
-              <TableCell>{row.title}</TableCell>
-              <TableCell>{row.unit}</TableCell>
-              <TableCell>{row.quantity}</TableCell>
-              <TableCell>{row.unitPrice}</TableCell>
+              {tableStore.editing === row.id ? (
+                <RowForm row={row} />
+              ) : (
+                <>
+                  <TableCell>{row.title}</TableCell>
+                  <TableCell>{row.type === 'row' ? row.unit : ''}</TableCell>
+                  <TableCell>{row.type === 'row' ? row.quantity : ''}</TableCell>
+                  <TableCell>{row.type === 'row' ? row.unitPrice : ''}</TableCell>
+                </>
+              )}
               <TableCell>{row.price}</TableCell>
             </TableRow>
           ))}
