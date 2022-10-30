@@ -8,6 +8,10 @@ import { RowForm } from '../RowForm/RowForm';
 import * as S from './styles';
 
 export const DataTable: FC = observer(() => {
+  const handleRowClick = (rowId: number) => {
+    tableStore.editing = rowId// FIXME: make setter
+  }
+
   return (
     <S.Wrapper>
       <Table sx={{ backgroundColor: '#202124', borderCollapse: 'unset' }}>
@@ -36,7 +40,7 @@ export const DataTable: FC = observer(() => {
 
         <TableBody>
           {tableStore.rows.map((row) => (
-            <TableRow key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+            <TableRow key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} onClick={() => handleRowClick(row.id)}>
               <TableCell>
                 <Level id={row.id} parent={row.parent} type={row.type} />
               </TableCell>
