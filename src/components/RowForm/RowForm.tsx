@@ -24,6 +24,7 @@ export const RowForm: FC<RowFormProps> = observer(({ row }) => {
         unit,
         quantity,
         unitPrice,
+        price: unitPrice * quantity
       });
       tableStore.setEditing(null);
     }

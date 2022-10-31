@@ -86,14 +86,7 @@ class TableStore {
 
     this.rows.push(row);
     this.sortRows();
-    this.setEditing(index)
-
-    console.log('recalculated on save:', this.recalculation(row.parent, this.rows));
-
-    return {
-      current: row,
-      changed: this.recalculation(row.parent, this.rows),
-    };
+    this.setEditing(index);
   }
 
   // изменение строки
@@ -101,18 +94,11 @@ class TableStore {
     const index = this.rows.findIndex((v) => v.id === row.id);
 
     this.rows.splice(index, 1, row);
+    this.recalculation(row.parent, this.rows);
     this.sortRows();
-
-    console.log('recalculated on edit:', this.recalculation(row.parent, this.rows));
-
-    return {
-      current: row,
-      changed: this.recalculation(row.parent, this.rows),
-    };
   }
 
   recalculation(parentID: number | null, storage: RowData[]) {
-    // TODO: use for price change
     const rows = [...storage];
     const changedRows: RowData[] = [];
 
@@ -136,7 +122,10 @@ class TableStore {
       break;
     } while (currentParentIndex !== -1);
 
-    return changedRows;
+    const changedIds = changedRows.map((row) => row.id);
+
+    this.rows = this.rows.filter((row) => !changedIds.includes(row.id));
+    this.rows.push(...changedRows);
   }
 }
 
