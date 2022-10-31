@@ -9,7 +9,7 @@ import * as S from './styles';
 
 export const DataTable: FC = observer(() => {
   const handleRowClick = (rowId: number) => {
-    tableStore.editing = rowId// FIXME: make setter
+    tableStore.setEditing(rowId)
   }
 
   return (

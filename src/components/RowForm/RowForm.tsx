@@ -14,7 +14,7 @@ export const RowForm: FC<RowFormProps> = observer(({ row }) => {
     if (e.code === 'Enter') {
       // FIXME: make submitter
       console.log('submitted!');
-      tableStore.editing = null; // FIXME: make getter
+      tableStore.setEditing(null)
     }
   };
 

@@ -40,6 +40,11 @@ class TableStore {
     makeAutoObservable(this);
   }
 
+  // установка редактируемой строки
+  setEditing(rowId: number | null) {
+    this.editing = rowId;
+  }
+
   // получение строки по id
   getRow(rowId: number) {
     return this.rows.find((row) => row.id === rowId)!;
