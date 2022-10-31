@@ -1,39 +1,76 @@
 import { TableCell } from '@mui/material';
 import { observer } from 'mobx-react-lite';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { RowData } from '../../model/row';
 import { tableStore } from '../../store/TableStore';
-import { Input } from './Input';
+
+import * as S from './styles';
 
 type RowFormProps = {
   row: RowData;
 };
 
 export const RowForm: FC<RowFormProps> = observer(({ row }) => {
-  const handleSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const [title, setTitle] = useState<string>(row.title);
+  const [unit, setUnit] = useState<string>(row.unit);
+  const [quantity, setQuantity] = useState<number>(row.quantity);
+  const [unitPrice, setUnitPrice] = useState<number>(row.unitPrice);
+
+  const submit = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.code === 'Enter') {
-      // FIXME: make submitter
-      console.log('submitted!');
-      tableStore.setEditing(null)
+      tableStore.editRow({
+        ...row,
+        title,
+        unit,
+        quantity,
+        unitPrice,
+      });
+      tableStore.setEditing(null);
     }
   };
 
   return (
     <>
       <TableCell>
-        <Input name="title" value={row.unit} placeholder="Наименование..." handleSubmit={handleSubmit} />
+        <S.InputField 
+        name="title" 
+        value={title} 
+        placeholder="Наименование..." 
+        onKeyDown={submit}
+        onChange={(e) => setTitle(e.target.value)} 
+      />
       </TableCell>
 
       {row.type === 'row' ? (
         <>
           <TableCell>
-            <Input name="unit" value={row.unit} placeholder="Единицы измерения..." handleSubmit={handleSubmit} />
+            <S.InputField 
+            name="unit" 
+            value={unit} 
+            placeholder="Единицы измерения..." 
+            onKeyDown={submit}
+            onChange={(e) => setUnit(e.target.value)} 
+          />
           </TableCell>
+
           <TableCell>
-            <Input name="quantity" value={`${row.quantity}`} placeholder="Количество..." handleSubmit={handleSubmit} />
+            <S.InputField 
+            name="quantity" 
+            value={`${quantity}`} 
+            placeholder="Количество..." 
+            onKeyDown={submit}
+            onChange={(e) => setQuantity(+e.target.value || 0)} 
+          />
           </TableCell>
+
           <TableCell>
-            <Input name="unitPrice" value={`${row.unitPrice}`} placeholder="Цена за единицу..." handleSubmit={handleSubmit} />
+            <S.InputField 
+            name="unitPrice" 
+            value={`${unitPrice}`} 
+            placeholder="Цена за единицу..." 
+            onKeyDown={submit}
+            onChange={(e) => setUnitPrice(+e.target.value || 0)} 
+          />
           </TableCell>
         </>
       ) : (

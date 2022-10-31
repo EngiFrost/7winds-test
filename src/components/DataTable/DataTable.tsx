@@ -9,8 +9,8 @@ import * as S from './styles';
 
 export const DataTable: FC = observer(() => {
   const handleRowClick = (rowId: number) => {
-    tableStore.setEditing(rowId)
-  }
+    tableStore.setEditing(rowId);
+  };
 
   return (
     <S.Wrapper>
@@ -40,7 +40,11 @@ export const DataTable: FC = observer(() => {
 
         <TableBody>
           {tableStore.rows.map((row) => (
-            <TableRow key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} onClick={() => handleRowClick(row.id)}>
+            <TableRow 
+              key={row.id} 
+              sx={{ '&:last-child td, &:last-child th': { border: 0 }, '&:hover': { cursor: 'pointer' } }} 
+              onClick={() => handleRowClick(row.id)}
+            >
               <TableCell>
                 <Level id={row.id} parent={row.parent} type={row.type} />
               </TableCell>
