@@ -62,14 +62,14 @@ class TableStore {
     const step2: RowData[] = [];
 
     step1.forEach((item) => {
-      const childs = this.rows.filter((row) => row.parent === item.id).sort((a, b) => (a.type === b.type ? (a.id < b.id ? 1 : -1) : a.type === 'row' ? 1 : -1));
+      const childs = this.rows.filter((row) => row.parent === item.id).sort((a, b) => (a.type === b.type ? (a.id > b.id ? 1 : -1) : a.type === 'row' ? 1 : -1));
       step2.push(item, ...childs);
     });
 
     const step3: RowData[] = [];
     step2.forEach((item) => {
       if (item.parent !== null && item.type === 'level') {
-        const childs = this.rows.filter((row) => row.parent === item.id).sort((a, b) => (a.id < b.id ? 1 : -1));
+        const childs = this.rows.filter((row) => row.parent === item.id).sort((a, b) => (a.id > b.id ? 1 : -1));
         step3.push(item, ...childs);
       } else {
         step3.push(item);
@@ -86,6 +86,9 @@ class TableStore {
 
     this.rows.push(row);
     this.sortRows();
+    this.setEditing(index)
+
+    console.log('recalculated on save:', this.recalculation(row.parent, this.rows));
 
     return {
       current: row,
@@ -99,6 +102,8 @@ class TableStore {
 
     this.rows.splice(index, 1, row);
     this.sortRows();
+
+    console.log('recalculated on edit:', this.recalculation(row.parent, this.rows));
 
     return {
       current: row,

@@ -19,11 +19,11 @@ export const Level: FC<LevelProps> = ({ id, parent, type }) => {
 
   const createRow = (iconType: TLevel) => {
     tableStore.saveRow({
-      title: '', // TODO: from user input
-      unit: '', // TODO: from user input
-      quantity: 0, // TODO: from user input
-      unitPrice: 0, // TODO: from user input
-      price: 0, // TODO: from user input
+      title: '', 
+      unit: '', 
+      quantity: 0, 
+      unitPrice: 0, 
+      price: 0,
       parent: iconType === currentTLevel ? parent : id,
       type: iconType === 3 ? 'row' : 'level',
     });

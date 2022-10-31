@@ -10,6 +10,10 @@ type LevelIconProps = {
 };
 
 export const LevelIcon: FC<LevelIconProps> = ({ type, onClick, isHidden = false }) => {
-  const content = <S.Icon src={`${process.env.PUBLIC_URL}/svg/${ELevelIcon[type]}.svg`} alt="type" onClick={() => onClick(typeMap[type])} />;
+  const handleClick = (e: { stopPropagation: () => void; }) => {
+    e.stopPropagation()
+    onClick(typeMap[type])
+  }
+  const content = <S.Icon src={`${process.env.PUBLIC_URL}/svg/${ELevelIcon[type]}.svg`} alt="type" onClick={handleClick} />;
   return isHidden ? <S.HiddenContent>{content}</S.HiddenContent> : content;
 };
