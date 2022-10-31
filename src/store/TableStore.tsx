@@ -7,31 +7,11 @@ class TableStore {
       id: 1,
       title: 'Test title 1',
       unit: 'Litres',
-      quantity: 1234,
-      unitPrice: 22323,
-      price: 123425,
+      quantity: 0,
+      unitPrice: 0,
+      price: 0,
       parent: null,
       type: 'level',
-    },
-    {
-      id: 2,
-      title: 'Test title 2',
-      unit: 'Adasd',
-      quantity: 232,
-      unitPrice: 1,
-      price: 1232123,
-      parent: 1,
-      type: 'level',
-    },
-    {
-      id: 3,
-      title: 'Test title 3',
-      unit: 'Aaaaa',
-      quantity: 1,
-      unitPrice: 2,
-      price: 3,
-      parent: 1,
-      type: 'row',
     },
   ];
   editing: number | null = null;
@@ -58,7 +38,7 @@ class TableStore {
   // иерархическая сортировка строк
   sortRows() {
     // FIXME: make it simple!
-    const step1 = this.rows.filter((row) => row.parent === null);
+    const step1 = this.rows.filter((row) => row.parent === null).sort((a, b) => (a.id > b.id ? 1 : -1));
     const step2: RowData[] = [];
 
     step1.forEach((item) => {
